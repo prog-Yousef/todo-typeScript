@@ -1,0 +1,190 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+body {
+  margin: 0;
+  max-width: 450px;
+  font-family: "Fira Sans", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+h2 {
+  font-weight: 400;
+  margin: 0;
+}
+
+.homeWrapper {
+  color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(180deg, #3f6bc0 0%, #3fb1c0 100%);
+  text-align: center;
+}
+
+.logoSection {
+  margin-top: 80%;
+}
+
+.smiley {
+  margin-left: 2.5rem;
+  margin-right: 2.5rem;
+}
+
+.todoListWrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  justify-content: space-between;
+}
+
+.header {
+  background-color: rgba(63, 130, 192, 1);
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 16px 0px rgba(0, 0, 0, 0.24);
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+  padding: 0.1rem;
+  border-radius: 3px;
+  border: 1.5px solid black;
+}
+
+input[type="checkbox"]::before {
+  content: "";
+  width: 1.4rem;
+  height: 1.4rem;
+  clip-path: polygon(
+    20% 0%,
+    0% 20%,
+    30% 50%,
+    0% 80%,
+    20% 100%,
+    50% 70%,
+    80% 100%,
+    100% 80%,
+    70% 50%,
+    100% 20%,
+    80% 0%,
+    50% 30%
+  );
+
+  transform: scale(0);
+  background-color: white;
+}
+
+input[type="checkbox"]:checked::before {
+  transform: scale(0.7);
+}
+
+input[type="checkbox"]:checked {
+  background-color: black;
+}
+
+.todoContainer {
+  padding: 0.5rem;
+  height: 3rem;
+  display: flex;
+  text-align: center;
+  justify-content: space-between;
+  font-size: 1.2rem;
+  
+  & p {
+    margin: 0;
+  }
+  
+  & div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  border-bottom: 0.5px solid rgba(128, 128, 128, 0.253);
+}
+
+.todoListSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: max-content;
+}
+
+footer {
+  padding-left: 0.5rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(34, 34, 34, 1);
+  
+  & input {
+    color: rgba(238, 238, 238, 1);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    background: none;
+    border: none;
+    height: 60px;
+  }
+  
+  & input::placeholder {
+    color: rgba(238, 238, 238, 1);
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+  }
+}
+
+button {
+  width: 4rem;
+  height: 4rem;
+  background-color: rgba(63, 192, 138, 1);
+}
+
+.isDone {
+  opacity: 0.5;
+  
+  & p {
+    text-decoration: line-through;
+  }
+}
+
+/* Media Queries for Responsiveness */
+@media (min-width: 450px) {
+  body {
+    max-width: 800px; /* Allow for a larger max width on laptops */
+    padding: 0 20px; /* Add some horizontal padding */
+  }
+
+  .homeWrapper {
+    height: 100vh; /* Keep the height for larger screens */
+  }
+
+  .logoSection {
+    margin-top: 20%; /* Reduce the top margin on larger screens */
+  }
+
+  .todoContainer {
+    height: 4rem; /* Increase the height for todo items */
+    font-size: 1.4rem; /* Increase font size for readability */
+  }
+
+  footer {
+    height: 5rem; /* Adjust footer height */
+  }
+
+  button {
+    width: 5rem; /* Increase button size */
+    height: 5rem; /* Increase button size */
+  }
+}
