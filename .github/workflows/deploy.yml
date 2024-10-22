@@ -1,43 +1,31 @@
-name: todo-react-typescript
+name: Deploy React app
 
-on: 
+on:
   push:
     branches:
       - main
 
-      permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Set up Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: "npm"
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+      - name: Install modules
         run: npm ci
-      - name: Build
+      - name: Build dist
         run: npm run build
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Setup pages
+        uses: actions/configure-pages@v3
+      - name: Upload dist folder
+        uses: actions/upload-pages-artifact@v1
         with:
           path: "./dist"
-      - name: Deploy to GitHub Pages
+      - name: Deploy to Github pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v1
